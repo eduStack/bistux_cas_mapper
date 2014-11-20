@@ -12,16 +12,18 @@ def populate_user(user, attributes):
         if attributes.has_key('is_superuser'):
             user.is_superuser = attributes['is_superuser']
 
-        if attributes.has_key('is_staff'):
-            user.is_staff = attributes['is_staff']
+        if attributes.has_key('yhlb') and attributes['yhlb'] == 'J0000':
+            user.is_staff = True
 
-        if attributes.has_key('givenName'):
-            user.first_name = attributes['givenName']
-
-        if attributes.has_key('sn'):
-            user.last_name = attributes['sn']
-
-        if attributes.has_key('email'):
+        if attributes.has_key('xm'):
+            user.profile.name = attributes['xm']
+        
+        if attributes.has_key('email') and attributes['email'] is not None:
             user.email = attributes['email']
+        else attributes.has_key('email'):
+            if attributes['yhlb'] == 'J0000':
+                user.email ='%s@bistu.edu.cn' %(attributes['yhlb']) 
+            else:
+                user.email ='%s@mail.bistu.edu.cn' %(attributes['yhlb']) 
 
     pass
