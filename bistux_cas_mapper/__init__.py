@@ -18,12 +18,12 @@ def populate_user(user, attributes):
         if attributes.has_key('xm'):
             user.profile.name = attributes['xm']
         
-        if attributes.has_key('email') and attributes['email'] is not None:
+        if attributes.has_key('email') and attributes['email'] != 'null':
             user.email = attributes['email']
         else:
             if attributes['yhlb'] == 'J0000':
-                user.email ='%s@bistu.edu.cn' %(attributes['yhlb']) 
+                user.email ='%s@bistu.edu.cn' % user.username
             else:
-                user.email ='%s@mail.bistu.edu.cn' %(attributes['yhlb']) 
+                user.email ='%s@mail.bistu.edu.cn' % user.username
 
     pass
