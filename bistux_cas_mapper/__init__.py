@@ -20,7 +20,7 @@ def populate_user(user, attributes):
         
         if attributes.has_key('email') and attributes['email'] is not None:
             user.email = attributes['email']
-        else attributes.has_key('email'):
+        else:
             if attributes['yhlb'] == 'J0000':
                 user.email ='%s@bistu.edu.cn' %(attributes['yhlb']) 
             else:
